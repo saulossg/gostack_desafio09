@@ -4,7 +4,7 @@ export default class AddProductIdToOrdersProducts1600556020940 implements Migrat
     
     public async up(queryRunner: QueryRunner): Promise<void> {
          await queryRunner.addColumn(
-            'orders_product',
+            'orders_products',
             new TableColumn({
                 name: 'product_id',
                 type: 'uuid',
