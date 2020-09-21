@@ -5,7 +5,8 @@ import {
   UpdateDateColumn,
   JoinColumn,
   PrimaryGeneratedColumn,
-  ManyToOne,, JoinTable
+  ManyToOne, 
+  JoinTable,
 } from 'typeorm';
 
 import Order from '@modules/orders/infra/typeorm/entities/Order';
@@ -42,7 +43,7 @@ class OrdersProducts {
   created_at: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  update_at: Date;
 }
 
 export default OrdersProducts;

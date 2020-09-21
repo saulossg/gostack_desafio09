@@ -17,10 +17,10 @@ class Product {
   @Column()
   name: string;
 
-  @Column('decimal')
+  @Column()
   price: number;
 
-  @Column('int')
+  @Column()
   quantity: number;
 
   @OneToMany(() => OrdersProducts, order_products => order_products.product)
@@ -30,7 +30,7 @@ class Product {
   created_at: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  update_at: Date;
 }
 
 export default Product;

@@ -8,7 +8,7 @@ import Order from '../infra/typeorm/entities/Order';
 import IOrdersRepository from '../repositories/IOrdersRepository';
 
 interface IProduct {
-  product_id: string;
+  id: string;
   quantity: number;
 }
 
@@ -53,9 +53,9 @@ class CreateOrderService {
 
     const findProductsWwithNoQuantityAvailable = products.filter(
       product => existemProducts.filter(p => p.id === product.id)[0].quantity <= product.quantity,
-    )
+    );
 
-    if(!findProductsWwithNoQuantityAvailable.length) {
+    if(findProductsWwithNoQuantityAvailable.length) {
       throw new AppError(`The quantity ${findProductsWwithNoQuantityAvailable[0].quantity} is not available for ${findProductsWwithNoQuantityAvailable[0].id}`);
     }
 
@@ -73,9 +73,9 @@ class CreateOrderService {
     const { order_products } = order;
 
     const orderedProductsQuantity = products.map(product => ({
-      id: product.product_id,
+      id: product.id,
       quantity: 
-        existemProducts.filter(p => p.id === product.product_id)[0].quantity - product.quantity,
+        existemProducts.filter(p => p.id === product.id)[0].quantity - product.quantity,
     }));
 
     await this.productsRepository.updateQuantity(orderedProductsQuantity);
